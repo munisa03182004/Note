@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for employee in employees %}
+    
+    <div class="border border-black rounded p-4 w-1/2 flex flex-row justify-between items-center mb-2">{{ employee }}</div>
+
+
+{% endfor %}
+
+{% endblock content %}
