@@ -5,7 +5,7 @@ from . models import Note
 
 @admin.register(Note)
 class NoteAdmin(admin.ModelAdmin):
-    search_fields = ['title','body']
+    search_fields = ['title']
     list_filter = ['created','updated']
     list_display = ['title','is_done']
     list_display_links = ['title']

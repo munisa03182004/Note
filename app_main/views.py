@@ -30,10 +30,10 @@ def add_note(request):
     if request.method == 'POST':
         form = Note(request.POST)
         if form.is_valid():
-            # Set the owner_id field before saving the form
+            
             form.instance.owner_id = request.user
             form.save()
-            return redirect('home')  # Redirect to home page after adding note
+            return redirect('home')  
     else:
         form = Note()
     return render(request, 'app_main/add_note.html', {'form': form})
@@ -44,7 +44,7 @@ def update_note(request, note_id):
         form = Note(request.POST, instance=note)
         if form.is_valid():
             form.save()
-            return redirect('home')  # Redirect to home page after updating note
+            return redirect('home')  
     else:
         form = Note(instance=note)
     return render(request, 'app_main/update_note.html', {'form': form, 'note': note})
