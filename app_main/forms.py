@@ -12,7 +12,3 @@ class Note(ModelForm):
         model = Note
         fields =['title', 'description', 'is_done']
 
-# class NoteForm(ModelForm):
-#     class Meta:
-#         model = Note
-#         fields = ['title', 'description', 'is_done']

@@ -76,7 +76,7 @@
 
     <div class="notes-container">
         <a href="{% url 'logout' %}" class="logout-btn">Logout</a> <!-- Updated -->
-        <h1>{{ user.get_full_name }} ning qaydnomasi</h1>
+        <h1>{{ user.get_full_name }} ni qaydnomasi</h1>
 
         {% for note in note.note_set.all %}
             <div class="note">
