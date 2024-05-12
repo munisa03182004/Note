@@ -10,4 +10,9 @@ User = get_user_model()
 class Note(ModelForm):
     class Meta:
         model = Note
-        fields =['title']
+        fields =['title', 'description', 'is_done']
+
+# class NoteForm(ModelForm):
+#     class Meta:
+#         model = Note
+#         fields = ['title', 'description', 'is_done']

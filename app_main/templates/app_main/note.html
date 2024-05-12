@@ -1,8 +1,96 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{user.get_full_name}} ning qaydnomasi</h1>
+    <style>
+        /* CSS styles here */
+        .notes-container {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            position: relative; /* Added */
+        }
 
-<a href="{% url 'logout' %}">Logout</a>
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
 
+        .note {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .note-title {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .note-description {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .note-actions {
+            margin-top: 5px;
+        }
+
+        .note-actions a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .add-note-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .add-note-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Updated */
+        .logout-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #dc3545; /* Bootstrap danger color */
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333; /* Darker shade for hover */
+        }
+    </style>
+
+    <div class="notes-container">
+        <a href="{% url 'logout' %}" class="logout-btn">Logout</a> <!-- Updated -->
+        <h1>{{ user.get_full_name }} ning qaydnomasi</h1>
+
+        {% for note in note.note_set.all %}
+            <div class="note">
+                <h2 class="note-title">{{ note.title }}</h2>
+                <p class="note-description">{{ note.description }}</p>
+                <div class="note-actions">
+                    <a href="update_note.html" class="update-link">Update</a>
+                    <a href="#" class="delete-link">Delete</a>
+                </div>
+            </div>
+        {% empty %}
+            <p>No notes found.</p>
+{#            <a href="{% url 'add_note' %}" class="add-note-btn">Add Note</a>#}
+            <a class="add-note-btn" href="{% url 'add_note' %}">Add Note</a>
+        {% endfor %}
+    </div>
 {% endblock content %}

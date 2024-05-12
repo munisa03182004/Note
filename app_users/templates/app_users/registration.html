@@ -5,5 +5,8 @@
     {% csrf_token %}
     {{ form }}
     <button type="submit">Ro'yxatdan o'tish</button>
+    <p>
+        Akkauntingiz bormi ? <a class="text-blue-600" href="{% url 'login' %}">Login</a>
+    </p>
 </form>
 {% endblock content %}
